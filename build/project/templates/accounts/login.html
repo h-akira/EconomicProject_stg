@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Login Page{% endblock %}
+
+{% block content %}
+<h3 class="title is-3 padding-top-10">ログインフォーム</h3>
+<p>{{ error }}</p>
+<form method="post" action="{{ 'accounts:login'|url() }}">        
+  {{ form.csrf_token }}
+  <p>
+    {{ form.username.label }}
+    {{ form.username }}
+  </p>
+  <p>
+    {{ form.password.label }}
+    {{ form.password }}
+  </p>
+  <button type="submit" class="button is-link">ログイン</button>
+  {# <a href="{{ 'wiki:index'|url() }}" class="button is-link">ホームに戻る</a> #}
+  <a href="{{ 'accounts:signup'|url() }}" class="button is-link is-light">アカウント作成フォーム</a>
+</form>
+{% endblock %}
