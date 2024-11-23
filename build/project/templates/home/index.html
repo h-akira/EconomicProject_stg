@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+{% endblock extra_css %}
+
+{% block title %}ホーム{% endblock title %}
+{% block content %}
+<h1 class="title is-1 padding-all has-text-centered">ホーム</h1>
+<div class="padding-all">
+  <div class="columns is-multiline">
+    <div class="column" style="height: 500px;">
+      {% include 'home/calendar.html' %}
+    </div>
+    <div class="column" style="height: 500px">
+      {% include 'home/rate.html' %}
+    </div>
+  </div>
+  {% include 'home/USDJPY.html' %}
+  {# <div class="columns"> #}
+  {#   <div class="column"> #}
+  {#     {% include 'home/JP225.html' %} #}
+  {#   </div>  #}
+  {#   <div class="column"> #}
+  {#     {% include 'home/US30.html' %} #}
+  {#   </div> #}
+  {# </div> #}
+</div>
+{% endblock content %}
+
+{% block extra_js %}
+<script src="{{ 'static:js'|url(item='widget.js') }}"></script>
+{% endblock extra_js %}

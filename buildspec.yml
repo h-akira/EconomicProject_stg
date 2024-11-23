@@ -1,0 +1,26 @@
+version: 0.2
+
+env:
+  parameter-store:
+    settings_secret_userPoolID: "/EconomicProject/stg/settings_secret/userPoolID"
+    settings_secret_clientID: "/EconomicProject/stg/settings_secret/clientID"
+    settings_secret_MAPPING_PATH: "/EconomicProject/stg/settings_secret/MAPPING_PATH"
+    settings_secret_DEBUG: "/EconomicProject/stg/settings_secret/DEBUG"
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+    commands:
+      - pip install -r requirements.txt
+      - pip install -r requirements.txt -t build/external/python/lib/python3.12/site-packages
+  build:
+    commands:
+      - python3 ./gen_settings_secret.py
+      - DIR=$(jq -r ".layer.directory" settings.json)
+      - NAME=$(jq -r ".layer.name" settings.json)
+      - S3_BUCKET=$(jq -r ".S3.bucket" settings.json)
+      - S3_KEY=$(jq -r ".S3.key" settings.json)
+      - aws s3 sync build/static/css s3://$S3_BUCKET/$S3_KEY/CloudFront/static/css --delete
+      - aws s3 sync build/static/js s3://$S3_BUCKET/$S3_KEY/CloudFront/static/js --delete
+      - aws s3 sync build/static/images s3://$S3_BUCKET/$S3_KEY/CloudFront/static/images --delete
+      - had-admin.py -D settings.json -A add.yaml --no-wait
