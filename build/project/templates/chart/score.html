@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+{% endblock extra_css %}
+
+{% block title %}ホーム{% endblock title %}
+{% block content %}
+<h1 class="title is-1 padding-all has-text-centered">スコア</h1>
+  <div id="chart" style="height: 400px;"></div>
+  <script>
+    const source_path = "{{ source_path }}";
+  </script>
+  <script>
+    // チャートを作成
+    const chart = LightweightCharts.createChart(document.getElementById('chart'), {
+      width: 600,
+      height: 400,
+      layout: {
+        backgroundColor: '#ffffff',
+        textColor: '#000',
+      },
+      rightPriceScale: {
+        visible: true,
+      },
+    });
+
+    // 最初の折れ線グラフ (右のY軸に対応)
+    const lineSeries1 = chart.addLineSeries({
+      color: 'blue',
+      lineWidth: 2,
+    });
+
+    // 2番目の折れ線グラフ (左のY軸に対応)
+    const lineSeries2 = chart.addLineSeries({
+      color: 'red',
+      lineWidth: 2,
+      priceScaleId: 'left', // 別のスケールを使用
+    });
+
+    // JSONファイルをfetchで取得
+    // fetch('payload.json')
+    fetch(source_path)
+      .then(response => response.json())
+      .then(jsonData => {
+        // dataフィールドにアクセス
+        const data = jsonData.data;
+
+        // データをパースして各線に設定
+        const dataSeries1 = data.map(item => ({ time: item.time, value: item.score }));
+        const dataSeries2 = data.map(item => ({ time: item.time, value: item.SP500_rate }));
+
+        // 各線にデータをセット
+        lineSeries1.setData(dataSeries1);
+        lineSeries2.setData(dataSeries2);
+      })
+      .catch(error => console.error('Error fetching JSON data:', error));
+
+    // 左のスケールを可視化
+    chart.applyOptions({
+      leftPriceScale: {
+        visible: true,
+      },
+    });
+  </script>
+{% endblock content %}
+
+{% block extra_js %}
+{# <script src="{{ 'static:js'|url(item='widget.js') }}"></script> #}
+{% endblock extra_js %}
