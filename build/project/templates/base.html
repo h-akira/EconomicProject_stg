@@ -31,7 +31,7 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <a class="navbar-item" href="{{ 'home:index'|url() }}">ホーム</a>
-        <!-- <a class="navbar-item sidebar-toggle" role="button">記事一覧</a> -->
+        <a class="navbar-item sidebar-toggle" role="button">チャート</a>
       </div>
       <div class="navbar-end">
         {% if request.auth %}
@@ -47,27 +47,25 @@
       </div>
     </div>
   </nav>
-  <!-- <aside id="sidebar" class="sidebar"> -->
-  <!--   <div class="has-background-grey-dark has-text-white"> -->
-  <!--     <div class="padding-all"> -->
-  <!--       <div class="container"> -->
-  <!--         <div class="columns no-margin is-mobile"> -->
-  <!--           <div class="column is-narrow"> -->
-  <!--             階層図 -->
-  <!--           </div> -->
-  <!--           <div class="column has-text-right"> -->
-  <!--             <button class="button sidebar-toggle delete is-dark"></button> -->
-  <!--           </div> -->
-  <!--         </div> -->
-  <!--       </div> -->
-  <!--     </div> -->
-  <!--     <div class="tree"> -->
-  {#      {% for html in nav_tree_htmls %}#}
-  {#     {{ html | safe  }}#}
-  {#     {% endfor %}#}
-  <!--     </div> -->
-  <!--   </div> -->
-  <!-- </aside> -->
+  <aside id="sidebar" class="sidebar">
+    <div class="has-background-grey-dark has-text-white">
+      <div class="padding-all">
+        <div class="container">
+          <div class="columns no-margin is-mobile">
+            <div class="column is-narrow">
+              チャート一覧
+            </div>
+            <div class="column has-text-right">
+              <button class="button sidebar-toggle delete is-dark"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>
+        <a class="navbar-item" href="{{ 'chart:score'|url() }}">スコア</a>
+      </p>
+    </div>
+  </aside>
   {% block content %}{% endblock content %}
     <!-- Custom JSS -->
     <script src="{{ 'static:js'|url(item='menu.js') }}"></script>
