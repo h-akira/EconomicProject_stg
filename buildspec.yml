@@ -15,8 +15,8 @@ phases:
       # - python3 -m venv .env
       # - source .env/bin/activate
       # - cp dot.pydistutils.cfg ~/.pydistutils.cfg
-      - pip config list
-      - unset PYTHONUSERBASE
+      # - pip config list
+      # - unset PYTHONUSERBASE
       - pip install -r requirements.txt
       - pip install -r requirements.txt -t build/external/python/lib/python3.12/site-packages
       # - pip install --upgrade pip wheel
