@@ -12,10 +12,10 @@ phases:
       python: 3.12
     commands:
       # - pip install --upgrade pip wheel
-      - pip install -r requirements.txt
-      - pip install -r requirements.txt -t build/external/python/lib/python3.12/site-packages
       - pip install yfinance
       - pip install yfinance -t build/external/python/lib/python3.12/site-packages
+      - pip install -r requirements.txt
+      - pip install -r requirements.txt -t build/external/python/lib/python3.12/site-packages
   build:
     commands:
       - echo "Build started on `date`"
