@@ -11,8 +11,9 @@ phases:
     runtime-versions:
       python: 3.12
     commands:
-      - pip3 install -r requirements.txt
-      - pip3 install -r requirements.txt -t build/external/python/lib/python3.12/site-packages
+      - pip install --upgrade pip setuptools wheel
+      - pip install -r requirements.txt
+      - pip install -r requirements.txt -t build/external/python/lib/python3.12/site-packages
   build:
     commands:
       - echo "Build started on `date`"
