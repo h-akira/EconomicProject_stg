@@ -1,4 +1,10 @@
 // Description: This file contains the code for the trading view chart.
+//
+
+// currencyPairSelect
+const currencyPairSelect = document.getElementById('currencyPairSelect');
+let currencyPair = currencyPairSelect.value;
+let FETCH_URL_DATA = `/source/normal/yahoo/${currencyPair}`;
 
 // Get the date from the url 
 function fetchChartData() {
@@ -168,9 +174,6 @@ window.addEventListener("resize", () => {
   chart.resize(width, 600);
 });
 
-// Add event listener to the date input
-const currencyPairSelect = document.getElementById('currencyPairSelect');
-FETCH_URL_DATA = `/source/normal/yahoo/${currencyPair}`;
 // const timeframeSelect = document.getElementById('timeframeSelect');
 function updateFetchUrl() {
   document.getElementById('sourceDisplay').textContent = '...';
