@@ -170,6 +170,7 @@ window.addEventListener("resize", () => {
 
 // Add event listener to the date input
 const currencyPairSelect = document.getElementById('currencyPairSelect');
+FETCH_URL_DATA = `/source/normal/yahoo/${currencyPair}`;
 // const timeframeSelect = document.getElementById('timeframeSelect');
 function updateFetchUrl() {
   document.getElementById('sourceDisplay').textContent = '...';
