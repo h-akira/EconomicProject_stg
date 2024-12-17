@@ -3,6 +3,9 @@
 
 // currencyPairSelect
 const currencyPairSelect = document.getElementById('currencyPairSelect');
+currencyPairSelect.addEventListener('change', updateFetchUrl);
+// const timeframeSelect = document.getElementById('timeframeSelect');
+// timeframeSelect.addEventListener('change', updateFetchUrl);
 let currencyPair = currencyPairSelect.value;
 let FETCH_URL_DATA = `/source/normal/yahoo/${currencyPair}`;
 
@@ -174,7 +177,6 @@ window.addEventListener("resize", () => {
   chart.resize(width, 600);
 });
 
-// const timeframeSelect = document.getElementById('timeframeSelect');
 function updateFetchUrl() {
   document.getElementById('sourceDisplay').textContent = '...';
   const currencyPair = currencyPairSelect.value;
@@ -182,8 +184,6 @@ function updateFetchUrl() {
   FETCH_URL_DATA = `/source/normal/yahoo/${currencyPair}`;
   fetchChartData();
 }
-currencyPairSelect.addEventListener('change', updateFetchUrl);
-timeframeSelect.addEventListener('change', updateFetchUrl);
 
 document.addEventListener('DOMContentLoaded', function() {
   const container = document.getElementById('container');
