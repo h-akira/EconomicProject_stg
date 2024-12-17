@@ -15,8 +15,8 @@ function fetchChartData() {
     .then(response => response.json())
     .then(response => {
       const data = response.data;
-      const source = response.source;
-      document.getElementById('sourceDisplay').textContent = source;
+      // const source = response.source;
+      // document.getElementById('sourceDisplay').textContent = source;
       mainSeries.setData(data.map(item => ({
         time: item.time,
         open: item.open,
