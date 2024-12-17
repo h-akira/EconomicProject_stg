@@ -178,7 +178,7 @@ window.addEventListener("resize", () => {
 });
 
 function updateFetchUrl() {
-  document.getElementById('sourceDisplay').textContent = '...';
+  // document.getElementById('sourceDisplay').textContent = '...';
   const currencyPair = currencyPairSelect.value;
   // const timeframe = timeframeSelect.value;
   FETCH_URL_DATA = `/source/normal/yahoo/${currencyPair}`;
