@@ -12,5 +12,5 @@ setuptools==75.6.0
 six==1.16.0
 tzdata==2024.2
 urllib3==2.2.3
-had @ git+https://github.com/h-akira/had.git@ca172187525102056e3cf3818a39ceff2de39e1a
+had @ git+https://github.com/h-akira/had.git@995f6cc6f7fd78ff8b8fb35985a1b92c8b5cb0c8
 yfinance==0.2.50
