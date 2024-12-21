@@ -11,8 +11,10 @@ phases:
     runtime-versions:
       python: 3.12
     commands:
-      - pip install -r requirements.txt
+      # - pip install -r requirements.txt
       - pip install -r requirements.txt -t build/external/python/lib/python3.12/site-packages
+      - export PATH=$PATH:build/external/python/bin
+      - export PYTHONPATH=$PYTHONPATH:build/external/python/lib/python3.12/site-packages
   build:
     commands:
       - echo "Build started on `date`"
