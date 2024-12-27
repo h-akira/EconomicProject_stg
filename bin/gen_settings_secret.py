@@ -5,6 +5,7 @@ DIR_PATH = os.path.join(
   os.path.dirname(
     os.path.abspath(__file__)
   ), 
+  "..",
   "build/project/python/lib/python3.12/site-packages/project"
 )
 FILE_PATH = os.path.join(DIR_PATH, "settings_secret.py")
